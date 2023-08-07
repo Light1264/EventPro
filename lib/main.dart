@@ -6,6 +6,7 @@ import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/view_model/ev
 import 'package:eventpro/view/bottom_nav_bar_screens/profile_screen/view_model.dart/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'base_view_model.dart';
 import 'view/auth_screens/view_model/sign_up_view_model.dart';
 import 'view/onboarding_screens/onboarding_screen1.dart';
 import 'view/sign_up_as/view_model/sign_up_as_view_model.dart';
@@ -40,15 +41,19 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CardsViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BaseViewModel(),
         )
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'EventPro',
-          theme: ThemeData(
-            primarySwatch: Colors.grey,
-          ),
-          home: BottomNavBar()),
+        debugShowCheckedModeBanner: false,
+        title: 'EventPro',
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        home: OnboardingScreen1(),
+      ),
     );
   }
 }

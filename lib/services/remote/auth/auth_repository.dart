@@ -13,9 +13,12 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<RegisterResponse> registration(
-      {required String name, required String email, required String password}) async {
+      {required String name,
+      required String email,
+      required String password}) async {
     final response = await _networkClient.post(ApiRoutes.register,
-        queryParameters: {"name": name, "email": email, "pwd": password});
+        body: {"name": name, "email": email, "pwd": password});
+    print("@@@@@ $response");
     return RegisterResponse.fromJson(response);
   }
 
@@ -27,11 +30,12 @@ class AuthRepositoryImpl implements AuthRepository {
     return response;
   }
 
-   @override
-  Future<dynamic> forgotPassword(
-      {required String email}) async {
-    final response = await _networkClient.post(ApiRoutes.register,
-        queryParameters: {"email": email,});
+  @override
+  Future<dynamic> forgotPassword({required String email}) async {
+    final response =
+        await _networkClient.post(ApiRoutes.register, queryParameters: {
+      "email": email,
+    });
     return response;
   }
 }

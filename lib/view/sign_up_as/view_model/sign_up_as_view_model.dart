@@ -8,6 +8,7 @@ class SignUpAsViewModel extends ChangeNotifier {
   Color InActiveBackgroundColor = Color(0xffE3DCE9);
 
   selectSignUpValues(String signUpValue) {
+    
     ActiveBackgroundColor = InActiveBackgroundColor;
     print("+++++++++ $ActiveBackgroundColor");
     notifyListeners();

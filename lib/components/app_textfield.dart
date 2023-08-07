@@ -12,6 +12,9 @@ class AppTextField extends StatelessWidget {
     this.boxShadow = true,
     required this.fillColor,
     this.textFieldHeight = 48,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.contentPadding = const EdgeInsets.fromLTRB(15, 15, 5, 0),
   });
   TextInputType? textInputType;
   TextEditingController textFieldController;
@@ -20,6 +23,9 @@ class AppTextField extends StatelessWidget {
   bool boxShadow;
   Color fillColor;
   double textFieldHeight;
+  Widget? suffixIcon;
+  bool obscureText;
+  EdgeInsetsGeometry contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +46,7 @@ class AppTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
+        obscureText: obscureText,
         keyboardType: textInputType,
         controller: textFieldController,
         decoration: InputDecoration(
@@ -47,12 +54,13 @@ class AppTextField extends StatelessWidget {
           hintText: hintText,
           fillColor: fillColor,
           filled: true,
-          contentPadding: const EdgeInsets.fromLTRB(15, 15, 5, 0),
+          contentPadding: contentPadding,
           border: const OutlineInputBorder(borderSide: BorderSide.none),
           hintStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w300,
           ),
+          suffix: suffixIcon,
         ),
       ),
     );

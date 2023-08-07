@@ -252,7 +252,7 @@ class ProfileScreen extends StatelessWidget {
                   : Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: AppButton(
-                        buttonText: "GENERATE",
+                        buttonText: "GENERATE PROFILE",
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(

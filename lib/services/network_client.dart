@@ -121,22 +121,22 @@ class NetworkClient {
         data: body,
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
-        options: Options(
-          headers: {
-            ..._getAuthHeader,
-          },
-        ),
+        // options: Options(
+        //   headers: {
+        //     ..._getAuthHeader,
+        //   },
+        // ),
       );
-      print(_getAuthHeader.toString());
-      log(response.statusCode.toString());
-      log(response.data.toString());
+      print("-------------- ${_getAuthHeader.toString()}");
+      log("### ${response.statusCode.toString()}");
+      log("+++++++++++++ ${response.data.toString()}");
       log("=========== ${response.statusCode.toString()}");
+      print("responsse ${response.data}");
       return response.data;
     } on Failure {
       rethrow;
     }
   }
-
 
 // ======================================================
 //====================== Form data ======================

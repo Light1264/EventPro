@@ -24,11 +24,14 @@ class OnboardingScreen2 extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                SvgPicture.asset(
-                  "assets/ballon_eventpro.svg",
-                  height: 150,
+                // SvgPicture.asset(
+                //   "assets/ballon_eventpro.svg",
+                //   // height: 150,
+                // ),
+                Image.asset(
+                  "assets/balloon_eventpro.png",
+                  scale: 3,
                 ),
-                // Image.asset("assets/ballon_eventpro.svg"),
                 const SizedBox(
                   height: 30,
                 ),

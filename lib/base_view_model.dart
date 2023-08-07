@@ -2,8 +2,7 @@
 import 'package:eventpro/utils/k_logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
-
-import 'app_state/view_model_state.dart';
+import 'model/app_state/view_model_state.dart';
 
 class BaseViewModel extends ChangeNotifier {
   late final _logger = appLogger(runtimeType);

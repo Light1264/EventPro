@@ -5,9 +5,14 @@ import '../../components/app_button.dart';
 import '../auth_screens/sign_up_screen.dart';
 import 'view_model/sign_up_as_view_model.dart';
 
-class SignUpAsScreen extends StatelessWidget {
+class SignUpAsScreen extends StatefulWidget {
   const SignUpAsScreen({super.key});
 
+  @override
+  State<SignUpAsScreen> createState() => _SignUpAsScreenState();
+}
+
+class _SignUpAsScreenState extends State<SignUpAsScreen> {
   @override
   Widget build(BuildContext context) {
     SignUpAsViewModel signUpAsViewModel = context.watch<SignUpAsViewModel>();
@@ -36,13 +41,19 @@ class SignUpAsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    signUpAsViewModel.selectSignUpValues("User");
+                    // signUpAsViewModel.selectSignUpValues("User");
+                    setState(() {
+                      signUpAsViewModel.signUpValues = "User";
+                      print(signUpAsViewModel.signUpValues);
+                    });
                   },
                   child: Container(
                     height: 48,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: signUpAsViewModel.ActiveBackgroundColor,
+                      color: signUpAsViewModel.signUpValues == "User"
+                          ? Color(0xffE0CBF0)
+                          : signUpAsViewModel.InActiveBackgroundColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Padding(
@@ -63,12 +74,13 @@ class SignUpAsScreen extends StatelessWidget {
                             groupValue: signUpAsViewModel.signUpValues,
                             activeColor: Color(0xffCF87E8),
                             onChanged: (value) {
-                              signUpAsViewModel
-                                  .selectSignUpValues(value.toString());
-                              // setState(() {
-                              //   accountType = value.toString();
-                              //   print(accountType);
-                              // });
+                              // signUpAsViewModel
+                              //     .selectSignUpValues(value.toString());
+                              setState(() {
+                                signUpAsViewModel.signUpValues =
+                                    value.toString();
+                                print(signUpAsViewModel.signUpValues);
+                              });
                             },
                           ),
                         ],
@@ -81,13 +93,20 @@ class SignUpAsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    signUpAsViewModel.selectSignUpValues("Service Provider");
+                    // signUpAsViewModel.selectSignUpValues("Service Provider");
+                    setState(() {
+                      signUpAsViewModel.signUpValues = "Service Provider";
+                      print(signUpAsViewModel.signUpValues);
+                    });
                   },
                   child: Container(
                     height: 48,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: signUpAsViewModel.InActiveBackgroundColor,
+                      color:
+                          signUpAsViewModel.signUpValues == "Service Provider"
+                              ? Color(0xffE0CBF0)
+                              : signUpAsViewModel.InActiveBackgroundColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Padding(
@@ -108,12 +127,11 @@ class SignUpAsScreen extends StatelessWidget {
                             groupValue: signUpAsViewModel.signUpValues,
                             activeColor: Color(0xffCF87E8),
                             onChanged: (value) {
-                              signUpAsViewModel
-                                  .selectSignUpValues(value.toString());
-                              // setState(() {
-                              //   accountType = value.toString();
-                              //   print(accountType);
-                              // });
+                              setState(() {
+                                signUpAsViewModel.signUpValues =
+                                    value.toString();
+                                print(signUpAsViewModel.signUpValues);
+                              });
                             },
                           ),
                         ],
@@ -130,11 +148,13 @@ class SignUpAsScreen extends StatelessWidget {
             child: AppButton(
               buttonText: "NEXT",
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: ((context) => SignUpScreen()),
-                  ),
-                );
+                if (signUpAsViewModel.signUpValues == "User") {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => SignUpScreen()),
+                    ),
+                  );
+                }
               },
             ),
           )

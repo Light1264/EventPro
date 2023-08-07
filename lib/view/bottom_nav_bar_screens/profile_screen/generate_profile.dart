@@ -65,7 +65,7 @@ class GenerateProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 20,
                 ),
                 IconTextField(
                   textInputType: TextInputType.name,
@@ -78,7 +78,7 @@ class GenerateProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 55,
                 ),
                 Row(
                   children: [
@@ -117,7 +117,7 @@ class GenerateProfile extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 20,
                 ),
                 IconTextField(
                   textInputType: TextInputType.name,
@@ -130,7 +130,7 @@ class GenerateProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 20,
                 ),
                 IconTextField(
                   textInputType: TextInputType.emailAddress,
@@ -143,7 +143,7 @@ class GenerateProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 20,
                 ),
                 IconTextField(
                   textInputType: TextInputType.streetAddress,
@@ -156,7 +156,7 @@ class GenerateProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 80,
                 ),
                 AppButton(
                   buttonText: "GENERATE",
