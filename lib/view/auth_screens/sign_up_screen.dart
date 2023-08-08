@@ -152,7 +152,7 @@ class SignUpScreen extends StatelessWidget {
                                           ?.validate() ??
                                       false) {
                                     FocusScope.of(context).unfocus();
-                                    signUpAsViewModel.Register(
+                                    signUpAsViewModel.register(
                                       context: context,
                                       name: signUpAsViewModel.fullName.text,
                                       email: signUpAsViewModel.email.text,

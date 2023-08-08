@@ -1,10 +1,12 @@
+import 'package:eventpro/model/logIn_response.dart';
+
 import '../../../model/register_response.dart';
 
 abstract class AuthInterface {
  
   Future<RegisterResponse> registration(
       {required String name, required String email, required String password});
-  Future<dynamic> signIn(
+  Future<SignInResponse> signIn(
       {required String email, required String password});
   Future<dynamic> forgotPassword(
       {required String email,});

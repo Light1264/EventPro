@@ -1,6 +1,7 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../model/logIn_response.dart';
 import '../../../model/register_response.dart';
 import '../../../utils/locator.dart';
 import '../../local/local_cache.dart';
@@ -32,7 +33,7 @@ class AuthServiceImpl implements AuthService {
   }
 
    @override
-  Future<dynamic> signIn ({required String email, required String password}) async {
+  Future<SignInResponse> signIn ({required String email, required String password}) async {
     final response = await _authRepository.signIn(
       email: email,
       password: password

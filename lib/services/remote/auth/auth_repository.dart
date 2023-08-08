@@ -1,3 +1,4 @@
+import '../../../model/logIn_response.dart';
 import '../../../model/register_response.dart';
 import '../../../utils/api_routes.dart';
 import '../../../utils/k_logger.dart';
@@ -23,11 +24,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<dynamic> signIn(
+  Future<SignInResponse> signIn(
       {required String email, required String password}) async {
-    final response = await _networkClient.post(ApiRoutes.register,
+    final response = await _networkClient.post(ApiRoutes.signIn,
         queryParameters: {"email": email, "pwd": password});
-    return response;
+    return SignInResponse.fromJson(response);
   }
 
   @override

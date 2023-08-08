@@ -28,27 +28,62 @@ class SignUpViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Register({
+  register({
     required BuildContext context,
     required String name,
     required String email,
     required String password,
   }) async {
-    baseViewModel.changeState(ViewModelState.busy());
-    // phonumber = phonumber.substring(1);
-    // phonumber = "234$phonumber";
+    baseViewModel.changeState(const ViewModelState.busy());
     try {
       await authServices.registration(
-          name: name, email: email, password: password);
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: ((context) => BottomNavBar(
-                index: 0,
-              )),
-        ),
+        name: name,
+        email: email,
+        password: password,
       );
+      showMyToast("Registration successful");
+      baseViewModel.changeState(const ViewModelState.idle());
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: ((context) => BottomNavBar(
+                  index: 0,
+                )),
+          ),
+          (route) => false);
+      notifyListeners();
     } on Failure catch (failure) {
-      showMyToast(failure);
+      baseViewModel.changeState(const ViewModelState.idle());
+      notifyListeners();
+      showMyToast("An error occured");
+    }
+    baseViewModel.changeState(ViewModelState.idle());
+  }
+
+  signIn({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
+    baseViewModel.changeState(const ViewModelState.busy());
+    try {
+      await authServices.signIn(
+        email: email,
+        password: password,
+      );
+      showMyToast("Sign In Successful");
+      baseViewModel.changeState(const ViewModelState.idle());
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: ((context) => BottomNavBar(
+                  index: 0,
+                )),
+          ),
+          (route) => false);
+      notifyListeners();
+    } on Failure catch (failure) {
+      baseViewModel.changeState(const ViewModelState.idle());
+      notifyListeners();
+      showMyToast("An error occured");
     }
     baseViewModel.changeState(ViewModelState.idle());
   }
