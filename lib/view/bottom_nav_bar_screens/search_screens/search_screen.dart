@@ -88,7 +88,7 @@ class SearchScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: ((context) => UserDetails()),
+                              builder: ((context) => const UserDetails()),
                             ),
                           );
                         },

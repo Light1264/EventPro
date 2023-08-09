@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../../components/back_button.dart';
 import '../../../components/title_widget.dart';
 import '../../../main.dart';
-import '../../auth_screens/view_model/sign_up_view_model.dart';
 
 class ScheduleEvent extends StatelessWidget {
   const ScheduleEvent({super.key});

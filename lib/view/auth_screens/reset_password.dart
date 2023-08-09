@@ -1,5 +1,5 @@
 import 'package:eventpro/view/auth_screens/sign_in_screen.dart';
-import 'package:eventpro/view/onboarding_screens/onboarding_screen2.dart';
+// import 'package:eventpro/view/onboarding_screens/onboarding_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +8,7 @@ import '../../components/app_button.dart';
 import '../../components/app_textfield.dart';
 import '../../components/back_button.dart';
 import '../../main.dart';
-import '../sign_up_as/view_model/sign_up_as_view_model.dart';
+// import '../sign_up_as/view_model/sign_up_as_view_model.dart';
 import 'view_model/sign_up_view_model.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -89,7 +89,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: ((context) => SignInScreen()),
+                            builder: ((context) => const SignInScreen()),
                           ),
                         );
                       },

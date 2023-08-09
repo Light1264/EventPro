@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../main.dart';
 
+// ignore: must_be_immutable
 class UpcomingEventDate extends StatelessWidget {
   UpcomingEventDate({super.key, required this.index});
   int index;

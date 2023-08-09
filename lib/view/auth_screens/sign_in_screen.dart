@@ -1,7 +1,6 @@
 import 'package:eventpro/components/loader_page.dart';
 import 'package:eventpro/view/auth_screens/reset_password.dart';
 import 'package:eventpro/view/auth_screens/sign_up_screen.dart';
-import 'package:eventpro/view/onboarding_screens/onboarding_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -102,7 +101,7 @@ class SignInScreen extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: ((context) => ResetPasswordScreen()),
+                                builder: ((context) => const ResetPasswordScreen()),
                               ),
                             );
                           },
@@ -157,7 +156,7 @@ class SignInScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: ((context) => SignUpScreen()),
+                                    builder: ((context) => const SignUpScreen()),
                                   ),
                                 );
                               },

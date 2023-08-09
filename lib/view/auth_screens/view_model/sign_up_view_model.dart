@@ -51,12 +51,12 @@ class SignUpViewModel extends ChangeNotifier {
           ),
           (route) => false);
       notifyListeners();
-    } on Failure catch (failure) {
+    } on Failure {
       baseViewModel.changeState(const ViewModelState.idle());
       notifyListeners();
       showMyToast("An error occured");
     }
-    baseViewModel.changeState(ViewModelState.idle());
+    baseViewModel.changeState(const ViewModelState.idle());
   }
 
   signIn({
@@ -80,11 +80,38 @@ class SignUpViewModel extends ChangeNotifier {
           ),
           (route) => false);
       notifyListeners();
-    } on Failure catch (failure) {
+    } on Failure {
       baseViewModel.changeState(const ViewModelState.idle());
       notifyListeners();
       showMyToast("An error occured");
     }
-    baseViewModel.changeState(ViewModelState.idle());
+    baseViewModel.changeState(const ViewModelState.idle());
+  }
+
+    forgotPassword({
+    required BuildContext context,
+    required String email,
+  }) async {
+    baseViewModel.changeState(const ViewModelState.busy());
+    try {
+      await authServices.forgotPassword(
+        email: email,
+      );
+      showMyToast("Sign In Successful");
+      baseViewModel.changeState(const ViewModelState.idle());
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: ((context) => BottomNavBar(
+                  index: 0,
+                )),
+          ),
+          (route) => false);
+      notifyListeners();
+    } on Failure {
+      baseViewModel.changeState(const ViewModelState.idle());
+      notifyListeners();
+      showMyToast("An error occured");
+    }
+    baseViewModel.changeState(const ViewModelState.idle());
   }
 }

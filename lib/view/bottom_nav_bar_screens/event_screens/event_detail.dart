@@ -22,7 +22,7 @@ class EventDetails extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                AppBackButton(),
+                const AppBackButton(),
                 const SizedBox(
                   height: 40,
                 ),

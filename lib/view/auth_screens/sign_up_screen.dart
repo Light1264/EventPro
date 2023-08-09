@@ -8,11 +8,10 @@ import 'package:provider/provider.dart';
 import '../../components/app_button.dart';
 import '../../components/app_textfield.dart';
 import '../../components/back_button.dart';
-import '../bottom_nav_bar_screens/bottom_nav_bar.dart';
 import 'view_model/sign_up_view_model.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
+  const SignUpScreen({super.key});
 
   // GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -186,7 +185,7 @@ class SignUpScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: ((context) => SignInScreen()),
+                                    builder: ((context) => const SignInScreen()),
                                   ),
                                 );
                               },

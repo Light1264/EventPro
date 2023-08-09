@@ -6,6 +6,7 @@ import '../../../components/app_button.dart';
 import '../../../components/white_container.dart';
 import '../../../main.dart';
 
+// ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
   bool hasProfle = false;
@@ -256,7 +257,7 @@ class ProfileScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: ((context) => GenerateProfile()),
+                              builder: ((context) => const GenerateProfile()),
                             ),
                           );
                         },

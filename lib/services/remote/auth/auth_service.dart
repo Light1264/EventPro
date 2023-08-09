@@ -1,5 +1,4 @@
 
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../model/logIn_response.dart';
 import '../../../model/register_response.dart';

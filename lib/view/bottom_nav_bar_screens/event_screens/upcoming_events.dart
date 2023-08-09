@@ -1,5 +1,4 @@
 import 'package:eventpro/main.dart';
-import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/event_detail.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/schedule_an_event.dart';
 import 'package:flutter/material.dart';
 
@@ -171,8 +170,8 @@ class UpComingEvents extends StatelessWidget {
                       ...List.generate(
                         int == 0 ? 1 : 0,
                         (int) {
-                          return Column(
-                            children: const [
+                          return const Column(
+                            children: [
                               Padding(
                                 padding: EdgeInsets.fromLTRB(80, 8, 24, 5),
                                 child: Divider(

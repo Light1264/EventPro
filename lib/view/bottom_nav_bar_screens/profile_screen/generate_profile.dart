@@ -1,8 +1,5 @@
 import 'package:eventpro/components/app_button.dart';
-import 'package:eventpro/components/calender_input_widget.dart';
 import 'package:eventpro/components/icon_textfield.dart';
-import 'package:eventpro/components/notif_input_widget.dart';
-import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/view_model/events_view_model.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/profile_screen/view_model.dart/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../../../components/back_button.dart';
 import '../../../components/title_widget.dart';
 import '../../../main.dart';
-import '../../auth_screens/view_model/sign_up_view_model.dart';
 
 class GenerateProfile extends StatelessWidget {
   const GenerateProfile({super.key});

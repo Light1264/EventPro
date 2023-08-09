@@ -40,14 +40,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
     List<Widget> screens = [
       const UpComingEvents(),
       const SearchScreen(),
-      AllCardsScreen(),
+      const AllCardsScreen(),
       ProfileScreen()
     ];
 
     return Scaffold(
       body: IndexedStack(
-        children: screens,
         index: current_index,
+        children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         enableFeedback: false,

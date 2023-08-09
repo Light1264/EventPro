@@ -10,7 +10,7 @@ import 'auth_interface.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final _log = appLogger(AuthRepository);
   final NetworkClient _networkClient = NetworkClient();
-  LocalCache _localCache = locator();
+  final LocalCache _localCache = locator();
 
   @override
   Future<RegisterResponse> registration(

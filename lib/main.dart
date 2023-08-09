@@ -1,6 +1,5 @@
 import 'package:eventpro/utils/constants.dart';
 import 'package:eventpro/utils/locator.dart';
-import 'package:eventpro/view/bottom_nav_bar_screens/bottom_nav_bar.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/cards_screen/view-model/card_view-model.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/view_model/events_view_model.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/profile_screen/view_model.dart/profile_view_model.dart';
@@ -52,7 +51,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
-        home: OnboardingScreen1(),
+        home: const OnboardingScreen1(),
       ),
     );
   }

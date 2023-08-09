@@ -5,7 +5,7 @@ import 'package:eventpro/view/bottom_nav_bar_screens/search_screens/all_posts.da
 import 'package:flutter/material.dart';
 
 class UserDetails extends StatelessWidget {
-  UserDetails({super.key});
+  const UserDetails({super.key});
 
   // GlobalKey _containerKey = GlobalKey();
 
@@ -110,7 +110,7 @@ class UserDetails extends StatelessWidget {
                               index == 4
                                   ? Icons.star_border_outlined
                                   : Icons.star,
-                              color: Color(0xffEFE267),
+                              color: const Color(0xffEFE267),
                               size: 15,
                             );
                           },
@@ -160,7 +160,7 @@ class UserDetails extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: ((context) => AllPost()),
+                        builder: ((context) => const AllPost()),
                       ),
                     );
                   },

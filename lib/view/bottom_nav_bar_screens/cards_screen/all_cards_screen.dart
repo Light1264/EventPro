@@ -6,7 +6,7 @@ import '../../../main.dart';
 enum Category { birthdays, weddings, valentine, condolences }
 
 class AllCardsScreen extends StatefulWidget {
-  AllCardsScreen({super.key});
+  const AllCardsScreen({super.key});
 
   @override
   State<AllCardsScreen> createState() => _AllCardsScreenState();

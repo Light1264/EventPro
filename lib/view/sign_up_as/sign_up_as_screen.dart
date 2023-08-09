@@ -52,7 +52,7 @@ class _SignUpAsScreenState extends State<SignUpAsScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: signUpAsViewModel.signUpValues == "User"
-                          ? Color(0xffE0CBF0)
+                          ? const Color(0xffE0CBF0)
                           : signUpAsViewModel.InActiveBackgroundColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -72,7 +72,7 @@ class _SignUpAsScreenState extends State<SignUpAsScreen> {
                           Radio(
                             value: 'User',
                             groupValue: signUpAsViewModel.signUpValues,
-                            activeColor: Color(0xffCF87E8),
+                            activeColor: const Color(0xffCF87E8),
                             onChanged: (value) {
                               // signUpAsViewModel
                               //     .selectSignUpValues(value.toString());
@@ -105,7 +105,7 @@ class _SignUpAsScreenState extends State<SignUpAsScreen> {
                     decoration: BoxDecoration(
                       color:
                           signUpAsViewModel.signUpValues == "Service Provider"
-                              ? Color(0xffE0CBF0)
+                              ? const Color(0xffE0CBF0)
                               : signUpAsViewModel.InActiveBackgroundColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -125,7 +125,7 @@ class _SignUpAsScreenState extends State<SignUpAsScreen> {
                           Radio(
                             value: 'Service Provider',
                             groupValue: signUpAsViewModel.signUpValues,
-                            activeColor: Color(0xffCF87E8),
+                            activeColor: const Color(0xffCF87E8),
                             onChanged: (value) {
                               setState(() {
                                 signUpAsViewModel.signUpValues =
@@ -151,7 +151,7 @@ class _SignUpAsScreenState extends State<SignUpAsScreen> {
                 if (signUpAsViewModel.signUpValues == "User") {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: ((context) => SignUpScreen()),
+                      builder: ((context) => const SignUpScreen()),
                     ),
                   );
                 }
