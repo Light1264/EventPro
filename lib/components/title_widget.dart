@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TitleWidget extends StatelessWidget {
-  TitleWidget({super.key, required this.bottomText, required this.topText});
-  String topText;
-  String bottomText;
+  const TitleWidget({super.key, required this.bottomText, required this.topText});
+  final String topText;
+  final String bottomText;
 
   @override
   Widget build(BuildContext context) {

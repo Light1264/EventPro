@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class IconTextField extends StatelessWidget {
-  IconTextField({
+  const IconTextField({
     super.key,
     required this.textInputType,
     required this.textFieldController,
     required this.hintText,
     required this.widgetIcon,
   });
-  TextInputType? textInputType;
-  TextEditingController textFieldController;
-  String hintText;
-  Icon widgetIcon;
+  final TextInputType? textInputType;
+  final TextEditingController textFieldController;
+  final String hintText;
+  final Icon widgetIcon;
 
   @override
   Widget build(BuildContext context) {

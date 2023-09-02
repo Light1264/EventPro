@@ -1,6 +1,7 @@
 import 'package:eventpro/components/loader_page.dart';
 import 'package:eventpro/view/auth_screens/reset_password.dart';
 import 'package:eventpro/view/auth_screens/sign_up_screen.dart';
+import 'package:eventpro/view/auth_screens/view_model/sign_in_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -9,14 +10,13 @@ import '../../components/app_textfield.dart';
 import '../../components/back_button.dart';
 import '../../main.dart';
 import '../../utils/functions.dart';
-import 'view_model/sign_up_view_model.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SignUpViewModel signUpAsViewModel = context.watch<SignUpViewModel>();
+    SignInViewModel signUpAsViewModel = context.watch<SignInViewModel>();
     return LoaderPage(
       isLoading: signUpAsViewModel.baseViewModel.isBusy,
       child: Scaffold(
@@ -128,8 +128,8 @@ class SignInScreen extends StatelessWidget {
                                   FocusScope.of(context).unfocus();
                                   signUpAsViewModel.signIn(
                                     context: context,
-                                    email: signUpAsViewModel.email.text,
-                                    password: signUpAsViewModel.password.text,
+                                    email: signUpAsViewModel.email.text.trim(),
+                                    password: signUpAsViewModel.password.text.trim(),
                                   );
                                 }
                               } else {

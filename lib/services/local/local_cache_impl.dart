@@ -11,7 +11,7 @@ class LocalCacheImpl implements LocalCache {
   static const _tokenKey = 'userToken';
   static const _userDataKey = 'userData';
   static const _marketPlaceData = 'marketPlaceData';
-  static const _userDataWIthModelKey = 'userDataWithModel';
+  // static const _userDataWIthModelKey = 'userDataWithModel';
   // late final _log = appLogger(LocalCacheImpl);
 
   late SharedPreferences _sharedPreferences;

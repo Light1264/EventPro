@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../components/app_button.dart';
 import '../../components/app_textfield.dart';
 import '../../components/back_button.dart';
-import 'view_model/sign_up_view_model.dart';
+import 'view_model/auth_view_model.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -17,7 +17,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SignUpViewModel signUpAsViewModel = context.watch<SignUpViewModel>();
+    AuthViewModel signUpAsViewModel = context.watch<AuthViewModel>();
     return LoaderPage(
       isLoading: signUpAsViewModel.baseViewModel.isBusy,
       child: Scaffold(

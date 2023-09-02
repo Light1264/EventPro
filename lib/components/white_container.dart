@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class WhiteContainer extends StatelessWidget {
-  WhiteContainer({super.key, required this.text});
-  String text;
+  const WhiteContainer({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {

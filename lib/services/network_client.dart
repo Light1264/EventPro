@@ -1,24 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-// import 'package:fortcore/core/constants/api_routes.dart';
-// import 'package:fortcore/core/utils/locator.dart';
-// import 'package:fortcore/core/utils/network_interceptor.dart';
-
-// ignore: depend_on_referenced_packages
 import 'package:http_parser/http_parser.dart';
-
 import 'exceptions/failure.dart';
 import '../utils/api_routes.dart';
 import 'local/local_cache.dart';
 import '../utils/locator.dart';
 import 'network_interceptor.dart';
 import 'package:mime/mime.dart';
-
-// import '../../models/exceptions/failure.dart';
-// import '../data/local/local_cache.dart';
 
 enum FormDataType { post, patch, put }
 
@@ -29,14 +19,17 @@ class NetworkClient {
 
   factory NetworkClient() => _singleton;
 
-  late final LocalCache _localCache = locator<LocalCache>();
+  // late final LocalCache _localCache = locator<LocalCache>();
+  final LocalCache _localCache = locator();
 
   final Dio _dio = createDio();
+  
+
 // ======================================================
 //================== Dio Initialization =================
 //=======================================================
-
-  static Dio createDio() {
+  
+   static Dio createDio() {
     var dio = Dio(BaseOptions(
       baseUrl: ApiRoutes.baseUrl,
       receiveTimeout: const Duration(seconds: 25), // 15 seconds
@@ -44,19 +37,49 @@ class NetworkClient {
       sendTimeout: const Duration(seconds: 25),
     ));
 
-    dio.interceptors.addAll({
+      dio.interceptors.addAll({
       AppInterceptors(dio),
     });
     return dio;
   }
 
+  //  Dio createDio() {
+  //   var dio = Dio(BaseOptions(
+  //     baseUrl: ApiRoutes.baseUrl,
+  //     receiveTimeout: const Duration(seconds: 25), // 15 seconds
+  //     connectTimeout: const Duration(seconds: 25),
+  //     sendTimeout: const Duration(seconds: 25),
+  //   ));
+
+  //   if (_localCache.getToken() != null) {
+  //     print("YOUR_BEARER_TOKEN ++++++++++");
+  //     dio.interceptors.addAll({
+  //     AppInterceptors(dio),
+  //     InterceptorsWrapper(
+  //       onRequest: (options, handler) {
+  //         // Replace 'YOUR_BEARER_TOKEN' with your actual bearer token
+  //         options.headers['Authorization'] = _localCache.getToken();
+  //         return handler.next(options);
+  //       },
+  //     )
+  //   });
+  //   } else {
+  //     dio.interceptors.addAll({
+  //     AppInterceptors(dio),
+  //   });
+  //   }
+    
+  //   return dio;
+  // }
+
   Map<String, String> get _getAuthHeader {
     final token = _localCache.getToken();
     if (token != null && token.isNotEmpty) {
       return {
-        "X-Parse-Session-Token": token,
+        // "X-Parse-Session-Token": token,
         // "X-Parse-Application-Id": ApiRoutes.appId,
-        "Content-Type": "application/json"
+        // "Content-Type": "application/json",
+        "Authorization": "Bearer $token"
       };
     }
     return {
@@ -65,38 +88,38 @@ class NetworkClient {
     };
   }
 
-// // ======================================================
-// //======================== Get ==========================
-// //=======================================================
-//   ///get request
-//   Future<T> get<T>(
-//     /// the api route path without the base url
-//     ///
-//     String uri, {
-//     Map<String, dynamic> queryParameters = const {},
-//     // Options options,
-//     CancelToken? cancelToken,
-//     ProgressCallback? onReceiveProgress,
-//   }) async {
-//     try {
-//       log(queryParameters.toString());
-//       Response response = await _dio.get(
-//         uri,
-//         queryParameters: queryParameters,
-//         cancelToken: cancelToken,
-//         onReceiveProgress: onReceiveProgress,
-//         options: Options(
-//           headers: {
-//             ..._getAuthHeader,
-//           },
-//         ),
-//       );
+// ======================================================
+//======================== Get ==========================
+//=======================================================
+  ///get request
+  Future<T> get<T>(
+    /// the api route path without the base url
+    ///
+    String uri, {
+    Map<String, dynamic> queryParameters = const {},
+    // Options options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      log(queryParameters.toString());
+      Response response = await _dio.get(
+        uri,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
+        onReceiveProgress: onReceiveProgress,
+        options: Options(
+          headers: {
+            ..._getAuthHeader,
+          },
+        ),
+      );
 
-//       return response.data as T;
-//     } on Failure {
-//       rethrow;
-//     }
-//   }
+      return response.data as T;
+    } on Failure {
+      rethrow;
+    }
+  }
 
 // ======================================================
 //======================== POST ==========================
@@ -121,11 +144,11 @@ class NetworkClient {
         data: body,
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
-        // options: Options(
-        //   headers: {
-        //     ..._getAuthHeader,
-        //   },
-        // ),
+        options: Options(
+          headers: {
+            ..._getAuthHeader,
+          },
+        ),
       );
       print("-------------- ${_getAuthHeader.toString()}");
       log("### ${response.statusCode.toString()}");

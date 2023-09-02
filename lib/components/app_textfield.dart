@@ -2,7 +2,7 @@ import 'package:eventpro/main.dart';
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
-  AppTextField({
+  const AppTextField({
     super.key,
     required this.textInputType,
     required this.textFieldController,
@@ -15,16 +15,16 @@ class AppTextField extends StatelessWidget {
     this.obscureText = false,
     this.contentPadding = const EdgeInsets.fromLTRB(15, 15, 5, 0),
   });
-  TextInputType? textInputType;
-  TextEditingController textFieldController;
-  Widget prefixIcon;
-  String hintText;
-  bool boxShadow;
-  Color fillColor;
-  double textFieldHeight;
-  Widget? suffixIcon;
-  bool obscureText;
-  EdgeInsetsGeometry contentPadding;
+  final TextInputType? textInputType;
+  final TextEditingController textFieldController;
+  final Widget prefixIcon;
+  final String hintText;
+  final bool boxShadow;
+  final Color fillColor;
+  final double textFieldHeight;
+  final Widget? suffixIcon;
+  final bool obscureText;
+  final EdgeInsetsGeometry contentPadding;
 
   @override
   Widget build(BuildContext context) {

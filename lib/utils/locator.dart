@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../services/local/local_cache.dart';
 import '../services/local/local_cache_impl.dart';
 import '../services/remote/auth/auth_repository.dart';
+import '../services/remote/events/event_repository.dart';
+import '../services/remote/events/event_service.dart';
+import '../services/remote/events/events_interface.dart';
 
 GetIt locator = GetIt.instance;
 Future<void> setupLocator() async {
@@ -27,10 +30,10 @@ Future<void> setupLocator() async {
       sharedPreferences: sharedPreferences,
     ),
   );
-  // locator.registerLazySingleton<AuthRepository>(
-  //   () => AuthRepositoryImpl(),
-  // );
-  // locator.registerLazySingleton<AuthService>(
-  //   () => AuthServiceImpl(),
-  // );
+  locator.registerLazySingleton<EventRepository>(
+    () => EventRepositoryImpl(),
+  );
+  locator.registerLazySingleton<EventService>(
+    () => EventServiceImpl(),
+  );
 }

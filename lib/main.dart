@@ -1,16 +1,20 @@
+import 'package:eventpro/services/local/local_cache.dart';
 import 'package:eventpro/utils/constants.dart';
 import 'package:eventpro/utils/locator.dart';
+import 'package:eventpro/view/auth_screens/view_model/sign_in_view_model.dart';
+import 'package:eventpro/view/bottom_nav_bar_screens/bottom_nav_bar.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/cards_screen/view-model/card_view-model.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/event_screens/view_model/events_view_model.dart';
 import 'package:eventpro/view/bottom_nav_bar_screens/profile_screen/view_model.dart/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'base_view_model.dart';
-import 'view/auth_screens/view_model/sign_up_view_model.dart';
+import 'view/auth_screens/view_model/auth_view_model.dart';
 import 'view/onboarding_screens/onboarding_screen1.dart';
 import 'view/sign_up_as/view_model/sign_up_as_view_model.dart';
 
 Constants constant = Constants();
+final LocalCache _localCache = locator();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
           create: (context) => SignUpAsViewModel(),
         ),
         ChangeNotifierProvider(
-          create: (context) => SignUpViewModel(),
+          create: (context) => AuthViewModel(),
         ),
         ChangeNotifierProvider(
           create: (context) => EventsViewModel(),
@@ -43,7 +47,13 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BaseViewModel(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SignInViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => EventsViewModel(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -51,7 +61,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
-        home: const OnboardingScreen1(),
+        home: _localCache.getToken() != null
+            ? BottomNavBar()
+            : const OnboardingScreen1(),
       ),
     );
   }
