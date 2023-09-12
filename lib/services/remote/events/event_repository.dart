@@ -20,14 +20,39 @@ class EventRepositoryImpl implements EventRepository {
     required List eventTypes,
   }) async {
     final response = await _networkClient.post(ApiRoutes.scheduleEvent, body: {
-      "eventname": eventname,
+      "eventName": eventname,
       "date": date,
       "time": time,
       "eventDescription": eventDescription,
       "eventTypes": eventTypes,
       "userId": _localCache.getFromLocalCache("id"),
     });
-;
+  
+    print("@@@@@ ${_localCache.getFromLocalCache("id")}");
+    return EventResponse.fromJson(response);
+  }
+
+  @override
+  Future<EventResponse> scheduleWishCard({
+    required String wishCard,
+    required String recipientName,
+    required int day,
+    required int month,
+    required int year,
+    required int hours,
+    required int minutes,
+  }) async {
+    final response = await _networkClient.post(ApiRoutes.scheduleEvent, body: {
+      "userId": _localCache.getFromLocalCache("id"),
+      "wishCard": wishCard,
+      "recipientName": recipientName,
+      "day": day,
+      "month": month,
+      "year": year,
+      "hours": hours,
+      "minutes": minutes,
+    });
+
     print("@@@@@ $response");
     return EventResponse.fromJson(response);
   }

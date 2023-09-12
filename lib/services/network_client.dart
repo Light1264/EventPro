@@ -78,7 +78,7 @@ class NetworkClient {
       return {
         // "X-Parse-Session-Token": token,
         // "X-Parse-Application-Id": ApiRoutes.appId,
-        // "Content-Type": "application/json",
+        "Content-Type": "application/json",
         "Authorization": "Bearer $token"
       };
     }
